@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <script>
+      function validateForm() {
+        let name = document.forms["registerForm"]["name"].value;
+        let email = document.forms["registerForm"]["email"].value;
+        let password = document.forms["registerForm"]["password"].value;
+        let phone = document.forms["registerForm"]["phone"].value;
+        let address = document.forms["registerForm"]["address"].value;
+
+        // Name validation
+        if (name.length < 3) {
+          alert("Name must be at least 3 characters long!");
+          return false;
+        }
+
+        // Email validation (basic format check)
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          alert("Please enter a valid email address!");
+          return false;
+        }
+
+        // Password validation (minimum 6 characters)
+        if (password.length < 6) {
+          alert("Password must be at least 6 characters long!");
+          return false;
+        }
+
+        // Phone validation (only numbers, 10 digits)
+        let phonePattern = /^[0-9]{10}$/;
+        if (!phonePattern.test(phone)) {
+          alert("Please enter a valid 10-digit phone number!");
+          return false;
+        }
+
+        // Address validation
+        if (address.length < 5) {
+          alert("Address must be at least 5 characters long!");
+          return false;
+        }
+
+        return true;
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Register</h2>
+    <form
+      name="registerForm"
+      action="register.php"
+      method="POST"
+      onsubmit="return validateForm()"
+    >
+      <label>Name:</label>
+      <input type="text" name="name" required /><br /><br />
+
+      <label>Email:</label>
+      <input type="email" name="email" required /><br /><br />
+
+      <label>Password:</label>
+      <input type="password" name="password" required /><br /><br />
+
+      <label>Phone:</label>
+      <input type="text" name="phone" required /><br /><br />
+
+      <label>Address:</label>
+      <input type="text" name="address" required /><br /><br />
+
+      <label>User Type:</label>
+      <select name="user_type">
+        <option value="farmer">Farmer</option>
+        <option value="consumer">Consumer</option>
+        <option value="admin">Admin</option></select
+      ><br /><br />
+
+      <button type="submit" name="register">Register</button>
+    </form>
+
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+  </body>
+</html>
