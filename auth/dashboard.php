@@ -28,8 +28,8 @@ if (!isset($_SESSION["user_id"])) {
     <ul>
         <li><a href="profile.php">Edit Profile</a></li>
         <li><a href="add_product.php">Add New Product</a></li>
-        <li><a href="orders.php">My Orders</a></li>
-        <li><a href="reviews.php">Manage Reviews</a></li>
+        <li> <a href="edit_product.php?product_id=<?php echo $product['id']; ?>">Edit</a> | </li>
+        <li><a href="delete_product.php?delete_product_id=<?php echo $product['id']; ?>" onclick="return confirm('Are you sure you want to delete this product?');">Delete</a></li>
     </ul>
 
     <hr>
